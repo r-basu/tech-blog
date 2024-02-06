@@ -1,0 +1,11 @@
+<section id="dashboard">
+  {{#each posts}}
+    <div>
+      <h2>{{title}}</h2>
+      <p>Posted by: {{User.username}} on {{createdAt}}</p>
+      <p>{{contents}}</p>
+    </div>
+  {{/each}}
+  <a href="/newpost" />
+  <button id="new-post">New Post +</button>
+</section>

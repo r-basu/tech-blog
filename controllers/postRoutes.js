@@ -35,6 +35,7 @@ router.get("/session/", (req, res) => {
 });
 
 // Find post by PostID
+// Cannot place above /xxxx routes otherwise parameter will run instead
 router.get("/:postId", (req, res) => {
   console.log(req.session.user.id);
   Post.findAll({
@@ -50,8 +51,6 @@ router.get("/:postId", (req, res) => {
       res.status(500).json({ msg: "Error finding post by PostId", err });
     });
 });
-
-
 
 // Create post
 router.post("/", (req, res) => {
