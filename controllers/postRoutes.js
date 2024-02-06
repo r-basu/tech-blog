@@ -67,4 +67,40 @@ router.post("/", (req, res) => {
     });
 });
 
+// Update post
+router.put("/:postId", (req, res) => {
+  Post.update(
+    {
+      title: req.body.title,
+      contents: req.body.contents,
+    },
+    {
+      where: {
+        id: req.params.postId,
+      },
+    }
+  )
+    .then((updatePost) => {
+      res.json(updatePost);
+    })
+    .catch((err) => {
+      res.status(500).json({ msg: "Error updating post", err });
+    });
+});
+
+// Delete post
+router.delete("/:postId", (req, res) => {
+  Post.destroy({
+    where: {
+      id: req.params.postId,
+    },
+  })
+    .then((deletePost) => {
+      res.json("Post has been deleted");
+    })
+    .catch((err) => {
+      res.status(500).json({ msg: "Error deleting post", err });
+    });
+});
+
 module.exports = router;
