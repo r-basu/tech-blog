@@ -1,4 +1,4 @@
-let postsContainer = document.getElementById("posts-container");
+const postsContainer = document.getElementById("posts-container");
 let fetchedPosts;
 
 fetch("/api/posts")

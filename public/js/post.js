@@ -14,6 +14,9 @@ fetch(`/api/posts/${postId}`)
   .then((post) => {
     fetchedPost = post;
     renderPost();
+  })
+  .catch((err) => {
+    console.log("Error fetching posts", err);
   });
 
 fetch(`/api/comments/${postId}`)
@@ -21,6 +24,9 @@ fetch(`/api/comments/${postId}`)
   .then((comments) => {
     fetchedComments = comments;
     renderComments();
+  })
+  .catch((err) => {
+    console.log("Error fetching comments", err);
   });
 
 const renderPost = () => {
@@ -58,11 +64,15 @@ commentSubmit.addEventListener("click", (e) => {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((res) => {
-    if (res.ok) {
-      location.reload();
-    } else {
-      console.log("Error adding comment");
-    }
-  });
+  })
+    .then((res) => {
+      if (res.ok) {
+        location.reload();
+      } else {
+        console.log("Error adding comment");
+      }
+    })
+    .catch((err) => {
+      console.log("Error", err);
+    });
 });
