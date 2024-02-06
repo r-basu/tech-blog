@@ -19,6 +19,9 @@ router.get("/login", (req, res) => {
   }
 });
 
-// Logout
+// Individual Post
+router.get("/post/:id", (req, res) => {
+  res.render("post");
+});
 
 module.exports = router;

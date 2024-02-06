@@ -43,18 +43,14 @@ const renderPosts = () => {
   posts.forEach((post) => {
     post.addEventListener("click", (e) => {
       if (e.target.parentNode.className === `post`) {
-        postId = e.target.parentNode.id;
-        renderPost(postId);
+        clickedPostId = e.target.parentNode.id;
+        goToPost(clickedPostId);
       }
     });
   });
 };
 
-const renderPost = (id) => {
-    if (id === '') {
-        return
-    } else {
-        localStorage.setItem('setPostId', id)
-        location.replace('/')
-    }
-}
+const goToPost = (postId) => {
+  localStorage.setItem("postId", postId);
+  location.replace(`/post/${postId}`);
+};
