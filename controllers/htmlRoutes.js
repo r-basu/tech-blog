@@ -11,12 +11,14 @@ router.get("/", (req, res) => {
 });
 
 // Login
-router.get('/login', (req,res) => {
-    if (req.session.user) {
-        res.redirect('/')
-    } else {
-        res.render('login')
-    }
-})
+router.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.redirect("/");
+  } else {
+    res.render("login");
+  }
+});
 
 // Logout
+
+module.exports = router;
